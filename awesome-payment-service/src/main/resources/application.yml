@@ -1,0 +1,58 @@
+server:
+  port: 8183
+
+domain:
+  accountBank:
+    name: accountBank
+  payment:
+    name: payment
+
+spring:
+  application:
+    name: awesome-payment-service
+  datasource:
+    url: jdbc:mysql://localhost:3309/payment
+    username: root
+    password: awesome-mariadb
+    platform: mysql
+    initialization-mode: always
+#    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: labs
+    password: awesome-rabbitmq
+  cloud:
+    stream:
+      bindings:
+        orderPayFailed:
+          destination: orderExchange
+          group: payment.orderPayFailed
+          content-type: application/json
+        accountCreated:
+          destination: accountExchange
+          group: payment.accountCreated
+          content-type: application/json
+        AccountBankOutput:
+          destination: accountBankExchange
+          content-type: application/json
+      rabbit:
+        bindings:
+          orderPayFailed:
+            consumer:
+              autoBindDlq: true
+              bindingRoutingKey: order.OrderPayFailed.#
+          accountCreated:
+            consumer:
+              autoBindDlq: true
+              bindingRoutingKey: account.AccountCreated.#
+          AccountBankOutput:
+            producer:
+              routing-key-expression: headers['routeTo']
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"

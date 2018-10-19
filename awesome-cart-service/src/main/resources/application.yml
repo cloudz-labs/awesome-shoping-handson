@@ -1,0 +1,55 @@
+server:
+  port: 8181
+
+domain:
+  name: cart
+
+spring:
+  application:
+    name: awesome-cart-service
+  datasource:
+    url: jdbc:mysql://localhost:3307/cart
+    username: root
+    password: awesome-mariadb
+    platform: mysql
+    initialization-mode: always
+#    driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: labs
+    password: awesome-rabbitmq
+  cloud:
+    stream:
+      bindings:
+        productAmountAdded:
+          destination: productExchange
+          group: cart.productAmountAdded
+          content-type: application/json
+        productSoldOut:
+          destination: productExchange
+          group: cart.productSoldOut
+          content-type: application/json
+        CartOutput:
+          destination: cartExchange
+          content-type: application/json
+      rabbit:
+        bindings:
+          productAmountAdded:
+            consumer:
+              autoBindDlq: true
+              bindingRoutingKey: product.ProductAmountAdded.#
+          productSoldOut:
+            consumer:
+              autoBindDlq: true
+              bindingRoutingKey: product.ProductSoldOut.#
+          CartOutput:
+            producer:
+              routing-key-expression: headers['routeTo']
+              
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"

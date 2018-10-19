@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skcc.payment.repository.PaymentMapper">
+	<parameterMap type="com.skcc.payment.event.message.PaymentEvent" id="PaymentEvent">
+		<parameter property="id"/>
+		<parameter property="domain"/>
+		<parameter property="paymentId"/>
+		<parameter property="eventType"/>
+		<parameter property="payload" typeHandler="com.skcc.payment.config.PaymentPayloadJsonTypeHandler"/>
+		<parameter property="txId"/>
+		<parameter property="createdAt"/>
+	</parameterMap>
+	<resultMap type="com.skcc.payment.event.message.PaymentEvent" id="PaymentEvent">
+		<result property="id" column="id"/>
+		<result property="domain" column="domain"/>
+		<result property="paymentId" column="paymentId"/>
+		<result property="eventType" column="eventType"/>
+		<result property="payload" column="payload" typeHandler="com.skcc.payment.config.PaymentPayloadJsonTypeHandler"/>
+		<result property="txId" column="txId"/>
+		<result property="createdAt" column="createdAt"/>
+	</resultMap>
+
+	<select id="findPaymentByAccountId" parameterType="long" resultType="com.skcc.payment.domain.Payment">
+		select * from payments where accountId = #{accountId}
+	</select>
+	
+	<select id="findPaymentByOrderId" parameterType="long" resultType="com.skcc.payment.domain.Payment">
+		select * from payments where orderId = #{orderId}
+	</select>
+	
+	<select id="findById" parameterType="long" resultType="com.skcc.payment.domain.Payment">
+		select * from payments where id = #{id}
+	</select>
+	
+	<insert id="createPayment" parameterType="com.skcc.payment.domain.Payment" useGeneratedKeys="true" keyProperty="id">
+		insert into payments(accountId, orderId, paymentMethod, paymentDetail1, paymentDetail2, paymentDetail3, price, paid, active, createdAt) 
+		values(#{accountId}, #{orderId}, #{paymentMethod}, #{paymentDetail1}, #{paymentDetail2}, #{paymentDetail3}, #{price}, #{paid}, #{active}, NOW() )
+	</insert>
+	
+	<update id="setPaymentPaid" >
+		update payments set paid=#{paid} where id = #{id}
+	</update>
+	
+	<select id="findunPaidPaymentById" parameterType="long" resultType="com.skcc.payment.domain.Payment">
+		select * from payments where id=#{id} and paid='unpaid'
+	</select>
+	
+	<update id="cancelPayment" >
+		update payments set active='inactive' where orderId = #{orderId}
+	</update>
+	
+	<select id="findPreviousPaymentEvent" resultMap="PaymentEvent">
+		select * from payment_events 
+		where id = (
+					select max(id) from payment_events 
+					where paymentId = #{paymentId} 
+					and id <![CDATA[ < ]]> (
+								select min(id) from payment_events 
+								where paymentId = #{paymentId} 
+								and txId = #{txId}
+							 )
+				 )
+	</select>
+	
+	<update id="undoPayPayment">
+		update payments set accountId = #{accountId}, orderId = #{orderId}, paymentMethod = #{paymentMethod}, paymentDetail1 = #{paymentDetail1}, paymentDetail2 = #{paymentDetail2}, paymentDetail3 = #{paymentDetail3}, price = #{price}, paid = #{paid}, active = #{active} where id = #{id}
+	</update>
+		
+</mapper>
