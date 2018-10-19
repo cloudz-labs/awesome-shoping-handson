@@ -6,24 +6,4 @@ docker run --name awesome-product-db -e MYSQL_ROOT_PASSWORD=awesome-mariadb -e M
 
 docker run --name awesome-rabbitmq -d -p 5672:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=labs -e RABBITMQ_DEFAULT_PASS=awesome-rabbitmq rabbitmq:3-management
 
-create table sequence(
-    id long not null
-    ,seq_name varchar(40) not null
-);
 
-insert into sequence(id, seq_name) values(1,'eventId');
-
-select get_Sequence('eventId');
-
-set sql_safe_updates=0;
-
-delimiter $$
-create function get_sequence(p_seq_name varchar(40))
-returns long reads sql data
-begin
-declare
-result_id long;
-update sequence set id = LAST_INSERT_ID(id+1) where seq_name = p_seq_name;
-set result_id = (select LAST_INSERT_ID());
-return result_id;
-end $$ delimiter;
