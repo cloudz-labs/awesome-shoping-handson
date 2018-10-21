@@ -1,1 +1,1 @@
-# awesome-shopping-handson
+# awesome-shoping-handson
