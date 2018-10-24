@@ -38,4 +38,7 @@ public interface PaymentMapper {
 //	@select("select * from payment_events where paymentId = #{paymentId} and id = (select max(id) from payment_events where paymentId = #{paymentId} and id < (select min(id) from payment_events where paymentId = #{paymentId} and txId = #{txId}))")
 	public PaymentEvent findPreviousPaymentEvent(@Param("txId") String txId, @Param("paymentId") long paymentId);
 	
+//	@select("select * from payment_events")
+	public List<PaymentEvent> getPaymentEvent();
+	
 }

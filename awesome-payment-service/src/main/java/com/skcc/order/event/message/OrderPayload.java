@@ -15,21 +15,21 @@ public class OrderPayload {
 	private long id;
 	private long accountId;
 	private long paymentId;
-	private OrderAccount orderAccount;
-	private OrderPayment orderPayment;
-	private List<OrderProduct> orderProducts;
+	private OrderAccount accountInfo;
+	private OrderPayment paymentInfo;
+	private List<OrderProduct> productsInfo;
 	private String paid;
 	private String status;
 	
-	public OrderPayload(long id, long accountId, long paymentId, OrderAccount orderAccount, OrderPayment orderPayment,
-			List<OrderProduct> orderProducts, String paid, String status) {
+	public OrderPayload(long id, long accountId, long paymentId, OrderAccount accountInfo, OrderPayment paymentInfo,
+			List<OrderProduct> productsInfo, String paid, String status) {
 		super();
 		this.id = id;
 		this.accountId = accountId;
 		this.paymentId = paymentId;
-		this.orderAccount = orderAccount;
-		this.orderPayment = orderPayment;
-		this.orderProducts = orderProducts;
+		this.accountInfo = accountInfo;
+		this.paymentInfo = paymentInfo;
+		this.productsInfo = productsInfo;
 		this.paid = paid;
 		this.status = status;
 	}
@@ -60,28 +60,28 @@ public class OrderPayload {
 		this.paymentId = paymentId;
 	}
 
-	public OrderAccount getOrderAccount() {
-		return orderAccount;
+	public OrderAccount getAccountInfo() {
+		return accountInfo;
 	}
 
-	public void setOrderAccount(OrderAccount orderAccount) {
-		this.orderAccount = orderAccount;
+	public void setAccountInfo(OrderAccount accountInfo) {
+		this.accountInfo = accountInfo;
 	}
 
-	public OrderPayment getOrderPayment() {
-		return orderPayment;
+	public OrderPayment getPaymentInfo() {
+		return paymentInfo;
 	}
 
-	public void setOrderPayment(OrderPayment orderPayment) {
-		this.orderPayment = orderPayment;
+	public void setPaymentInfo(OrderPayment paymentInfo) {
+		this.paymentInfo = paymentInfo;
 	}
 
-	public List<OrderProduct> getOrderProducts() {
-		return orderProducts;
+	public List<OrderProduct> getProductsInfo() {
+		return productsInfo;
 	}
 
-	public void setOrderProducts(List<OrderProduct> orderProducts) {
-		this.orderProducts = orderProducts;
+	public void setProductsInfo(List<OrderProduct> productsInfo) {
+		this.productsInfo = productsInfo;
 	}
 
 	public String getPaid() {
@@ -102,10 +102,11 @@ public class OrderPayload {
 
 	@Override
 	public String toString() {
-		return "OrderPayload [id=" + id + ", accountId=" + accountId + ", paymentId=" + paymentId + ", orderAccount="
-				+ orderAccount + ", orderPayment=" + orderPayment + ", orderProducts=" + orderProducts + ", paid="
-				+ paid + ", status=" + status + "]";
+		return "OrderPayload [id=" + id + ", accountId=" + accountId + ", paymentId=" + paymentId + ", accountInfo="
+				+ accountInfo + ", paymentInfo=" + paymentInfo + ", productsInfo=" + productsInfo + ", paid=" + paid
+				+ ", status=" + status + "]";
 	}
+	
 	
 	
 }

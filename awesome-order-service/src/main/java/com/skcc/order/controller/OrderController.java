@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skcc.order.domain.Order;
+import com.skcc.order.event.message.OrderEvent;
 import com.skcc.order.service.OrderService;
 
 @RestController
@@ -30,11 +31,16 @@ public class OrderController {
 	}
 	
 	@PutMapping(value="/orders")
-	public Order createOrder(@RequestBody Order order) {
-		//화면에서 order생성 후 orderId를 payment 생성할 때 전달해야 한다.그냥 조회하는게 낫지 않을까 ? 그거나 그거나 인듯..
+	public boolean createOrder(@RequestBody Order order) {
 		return this.orderService.createOrderAndCreatePublishOrderEvent(order);
 	}
 	
+	@GetMapping(value="/orders/events")
+	public List<OrderEvent> getOrderEvent(){
+		return this.orderService.getOrderEvent();
+	}
+	
+	//화면에서 삭제시 product 에 연관 txId 넘기기 고려 필요 
 //	@DeleteMapping(value="/orders/{id}") 
 //	public boolean cancelOrder(@PathVariable long id) {
 //		return this.orderService.cancelOrderAndCreatePublishOrderEvent(id);

@@ -1,0 +1,10 @@
+//account event 조회
+GET localhost:8090/account/v1/accounts/events
+//cart event 조회
+GET localhost:8090/cart/v1/carts/events
+//order event 조회
+GET localhost:8090/order/v1/orders/events
+//payment event 조회
+GET localhost:8090/payment/v1/payments/events
+//product event 조회
+GET localhost:8090/product/v1/products/events

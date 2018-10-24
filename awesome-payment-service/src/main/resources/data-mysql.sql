@@ -6,7 +6,7 @@ VALUES
 INSERT INTO payment_events
 (id,paymentId,domain, EventType,payload,txId,createdAt)
 VALUES
-(1,1,'payment','paymentCreated'
+(1,1,'payment','PaymentCreated'
 ,'{"id":1,"accountId":1,"orderId":1,"paymentMethod":"bank","paymentDetail1":"kb","paymentDetail2":"123123123123","paymentDetail3":"","price":90000,"paid":"paid","active":"active"}'
 ,'tx123123128'
 ,NOW());

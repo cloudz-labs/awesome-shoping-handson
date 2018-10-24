@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skcc.cart.domain.Cart;
+import com.skcc.cart.event.message.CartEvent;
 import com.skcc.cart.service.CartService;
 
 @RestController
@@ -50,6 +51,11 @@ public class CartController {
 	@PostMapping(value="/carts/{id}")
 	public boolean editCartQuantity(@PathVariable long id, @PathParam(value = "quantity") long quantity) {
 		return this.cartService.setCartQuantityAndCreatePublishEvent(id, quantity);
+	}
+	
+	@GetMapping(value="carts/events")
+	public List<CartEvent> getCartEvent() {
+		return this.cartService.getCartEvent();
 	}
 	
 }

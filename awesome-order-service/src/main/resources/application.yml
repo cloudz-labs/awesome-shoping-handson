@@ -8,7 +8,7 @@ spring:
   application:
     name: awesome-order-service
   datasource:
-    url: jdbc:mysql://localhost:3308/order
+    url: jdbc:mysql://localhost:3308/awesome
     username: root
     password: awesome-mariadb
     platform: mysql

@@ -41,4 +41,6 @@ public interface OrderMapper {
 //	@Select("select * from order_events where txId = #{txId}")
 	public OrderEvent findOrderEventByTxId(@Param("txId") String txId, @Param("eventType") String eventType);
 	
+//	@select("select * from order_events")
+	public List<OrderEvent> getOrderEvent();
 } 

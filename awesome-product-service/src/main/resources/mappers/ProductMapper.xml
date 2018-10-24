@@ -23,15 +23,15 @@
 	</resultMap>
 
 	<select id="findByCategoryId" resultType="com.skcc.product.domain.Product">
-		select * from products where categoryId = #{categoryId} and active = 'active'
+		select a.id, a.name, b.name as categoryName, a.active, a.originalPrice, a.salePercentage, a.salePrice, a.resultPrice, a.amount, a.img, a.createdAt from products a, categories b where a.categoryId = b.id and a.categoryId = #{categoryId} and a.active = 'active' order by id
 	</select>
 	
 	<select id="findProductOnSale" resultType="com.skcc.product.domain.Product">
-		select * from products where salePercentage > 0 and active = 'active'
+		select a.id, a.name, b.name as categoryName, a.active, a.originalPrice, a.salePercentage, a.salePrice, a.resultPrice, a.amount, a.img, a.createdAt from products a, categories b where a.categoryId = b.id and a.salePercentage > 0 and a.active = 'active' order by id
 	</select>
 	
 	<select id="findById" parameterType="long" resultType="com.skcc.product.domain.Product">
-		select * from products where id = #{id}
+		select a.id, a.name, b.name as categoryName, a.active, a.originalPrice, a.salePercentage, a.salePrice, a.resultPrice, a.amount, a.img, a.createdAt from products a, categories b where a.categoryId = b.id and a.id = #{id}
 	</select>
 	
 	<update id="setProductAmount" >
@@ -62,11 +62,15 @@
 	</select>
 	
 	<select id="getAllProducts" resultType="com.skcc.product.domain.Product">
-		select * from products where active = 'active'
+		select a.id, a.name, b.name as categoryName, a.active, a.originalPrice, a.salePercentage, a.salePrice, a.resultPrice, a.amount, a.img, a.createdAt from products a, categories b where a.categoryId = b.id and a.active = 'active' order by id
 	</select>
 	
 	<update id="setProductInactive">
 		update products set active = 'inactive' where id = #{id}
 	</update>
+	
+	<select id="getProductEvent" resultMap="ProductEvent">
+		select * from product_events;
+	</select>
 	
 </mapper>

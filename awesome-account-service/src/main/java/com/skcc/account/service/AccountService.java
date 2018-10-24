@@ -2,6 +2,7 @@ package com.skcc.account.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -153,6 +154,10 @@ public class AccountService {
 	
 	public boolean publishAccountEvent(AccountEvent accountEvent) {
 		return this.accountPublish.send(accountEvent);
+	}
+	
+	public List<AccountEvent> getAccountEvent() {
+		return this.accountMapper.getAccountEvent();
 	}
 	
 	public AccountEvent convertAccountToAccountEvent(String txId, long id, AccountEventType accountEventType) {

@@ -11,7 +11,7 @@ spring:
   application:
     name: awesome-payment-service
   datasource:
-    url: jdbc:mysql://localhost:3309/payment
+    url: jdbc:mysql://localhost:3309/awesome
     username: root
     password: awesome-mariadb
     platform: mysql
@@ -49,7 +49,6 @@ spring:
           AccountBankOutput:
             producer:
               routing-key-expression: headers['routeTo']
-
 management:
   endpoints:
     web:

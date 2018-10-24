@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skcc.product.domain.Product;
+import com.skcc.product.event.message.ProductEvent;
 import com.skcc.product.service.ProductService;
 
 @RestController
@@ -42,4 +43,8 @@ public class ProductController {
 		return this.productService.findById(id);
 	}
 	
+	@GetMapping(value="/products/events")
+	public List<ProductEvent> getProductEvent(){
+		return this.productService.getProductEvent();
+	}
 }

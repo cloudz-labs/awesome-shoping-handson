@@ -60,7 +60,7 @@ public class ProductService {
 	
 	public boolean addProductAmountAndCreatePublishProductEvent(OrderEvent orderEvent) {
 		boolean result = false;
-		List<OrderProduct> orderProducts = orderEvent.getPayload().getOrderProducts();
+		List<OrderProduct> orderProducts = orderEvent.getPayload().getProductsInfo();
 		String txId = orderEvent.getTxId();
 		try {
 			this.productService.addProductAmountAndCreatePublishProductAmountAddedEvent(txId, orderProducts);
@@ -79,7 +79,7 @@ public class ProductService {
 	
 	public boolean subtractProductAmountAndCreatePublishProductEvent(OrderEvent orderEvent) {
 		boolean result = false;
-		List<OrderProduct> orderProducts = orderEvent.getPayload().getOrderProducts();
+		List<OrderProduct> orderProducts = orderEvent.getPayload().getProductsInfo();
 		String txId = orderEvent.getTxId();
 		try {
 			this.productService.subtractProductAmountAndCreatePublishProductAmountSubtractedEvent(txId, orderProducts);
@@ -204,7 +204,7 @@ public class ProductService {
 		productEvent.setProductId(product.getId());
 		productEvent.setEventType(productEventType);
 		productEvent.setPayload(new ProductPayload(product.getId(), product.getName()
-				, product.getCategoryId(), product.getActive(), product.getOriginalPrice(), product.getSalePercentage()
+				, product.getCategoryName(), product.getActive(), product.getOriginalPrice(), product.getSalePercentage()
 				, product.getSalePrice(), product.getResultPrice(), product.getAmount(), product.getImg()));
 		productEvent.setTxId(txId);
 		productEvent.setCreatedAt(new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()));
@@ -229,6 +229,10 @@ public class ProductService {
 	public void subtractProductAmountValidationCheck(OrderProduct orderProduct, Product product) throws Exception {
 		if(product.getAmount() < orderProduct.getQuantity()) 
 			throw new Exception();
+	}
+	
+	public List<ProductEvent> getProductEvent(){
+		return this.productMapper.getProductEvent();
 	}
 	
 	public ProductEvent findProductEvent(long id, String txId, String eventType) {

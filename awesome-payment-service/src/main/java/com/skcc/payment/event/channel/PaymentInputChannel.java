@@ -5,7 +5,7 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface PaymentInputChannel {
 	String orderPayFailed = "orderPayFailed";
-	
+
 	@Input(PaymentInputChannel.orderPayFailed)
 	SubscribableChannel orderPayFailed();
 	

@@ -1,45 +1,45 @@
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Esprit Ruffle Shirt', 1, 'active', 100, 80000, 5, 4000, 76000, 'images/product-01.jpg', NOW());
+('Esprit Ruffle Shirt', 1, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-01.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Herschel supply', 1, 'active', 100, 100000, 10, 10000, 90000, 'images/product-02.jpg', NOW());
+('Herschel supply', 1, 'active', 100000, 100000, 10, 10000, 90000, 'images/product-02.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Only Check Trouser', 2, 'active', 100, 80000, 5, 4000, 76000, 'images/product-03.jpg', NOW());
+('Only Check Trouser', 2, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-03.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Classic Trench Coat', 1, 'active', 100, 200000, 20, 40000, 160000, 'images/product-04.jpg', NOW());
+('Classic Trench Coat', 1, 'active', 100000, 200000, 20, 40000, 160000, 'images/product-04.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Front Pocket Jumper', 1, 'active', 100, 100000, 10, 10000, 90000, 'images/product-05.jpg', NOW());
+('Front Pocket Jumper', 1, 'active', 100000, 100000, 10, 10000, 90000, 'images/product-05.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Vintage Inspired Classic', 5, 'active', 100, 500000, 10, 50000, 450000, 'images/product-06.jpg', NOW());
+('Vintage Inspired Classic', 5, 'active', 100000, 500000, 10, 50000, 450000, 'images/product-06.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Shirt in Stretch Cotton', 1, 'active', 100, 80000, 5, 4000, 76000, 'images/product-07.jpg', NOW());
+('Shirt in Stretch Cotton', 1, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-07.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Pieces Metallic Printed', 1, 'active', 100, 100000, 5, 5000, 95000, 'images/product-08.jpg', NOW());
+('Pieces Metallic Printed', 1, 'active', 100000, 100000, 5, 5000, 95000, 'images/product-08.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Converse All Star Hi Plimsolls', 4, 'active', 100, 50000, 5, 2500, 47500, 'images/product-09.jpg', NOW());
+('Converse All Star Hi Plimsolls', 4, 'active', 100000, 50000, 5, 2500, 47500, 'images/product-09.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Femme T-Shirt In Stripe', 1, 'active', 100, 80000, 5, 4000, 76000, 'images/product-10.jpg', NOW());
+('Femme T-Shirt In Stripe', 1, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-10.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Herschel supply', 2, 'active', 100, 80000, 5, 4000, 76000, 'images/product-11.jpg', NOW());
+('Herschel supply', 2, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-11.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Herschel belt', 2, 'active', 100, 80000, 10, 8000, 72000, 'images/product-12.jpg', NOW());
+('Herschel belt', 2, 'active', 100000, 80000, 10, 8000, 72000, 'images/product-12.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('T-Shirt with Sleeve', 1, 'active', 100, 100000, 10, 10000, 90000, 'images/product-13.jpg', NOW());
+('T-Shirt with Sleeve', 1, 'active', 100000, 100000, 10, 10000, 90000, 'images/product-13.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Pretty Little Thing', 1, 'active', 100, 80000, 5, 4000, 76000, 'images/product-14.jpg', NOW());
+('Pretty Little Thing', 1, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-14.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Mini Silver Mesh Watch', 5, 'active', 100, 1000000, 10, 100000, 900000, 'images/product-15.jpg', NOW());
+('Mini Silver Mesh Watch', 5, 'active', 100000, 1000000, 10, 100000, 900000, 'images/product-15.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
-('Square Neck Back', 1, 'active', 100, 100000, 10, 10000, 90000, 'images/product-16.jpg', NOW());
+('Square Neck Back', 1, 'active', 100000, 100000, 10, 10000, 90000, 'images/product-16.jpg', NOW());
 
 INSERT INTO product_events 
 (id,productId, domain, eventType, payload, txId, createdAt)
 VALUES
 (1,1,'product'
-, 'ProductAdded'
+, 'ProductAmountAdded'
 , '{ 
 	"id": 1
   	, "name": "Esprit Ruffle Shirt"
-  	, "categoryId": 1
+  	, "categoryName": "women"
   	, "active": "active"
   	, "amount": 100
   	, "originalPrice": 80000

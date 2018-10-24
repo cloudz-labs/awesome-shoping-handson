@@ -94,4 +94,7 @@
 		update carts set productQuantity = #{quantity} where id = #{id}
 	</update>
 	
+	<select id="getCartEvent" resultMap="CartEvent">
+		select * from cart_events;
+	</select>
 </mapper>

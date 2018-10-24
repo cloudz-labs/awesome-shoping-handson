@@ -13,7 +13,7 @@ VALUES
 , '[{ 
 	"id": 1
   	, "name": "Esprit Ruffle Shirt"
-  	, "categoryId": 1
+  	, "categoryName": "women"
   	, "active": "active"
   	, "quantity": 1
   	, "amount": 100
@@ -47,7 +47,7 @@ VALUES
 	, "productsInfo": [{ 
 		"id": 1
 	  	, "name": "Esprit Ruffle Shirt"
-	  	, "categoryId": 1
+	  	, "categoryName": "women"
 	  	, "active": "active"
 	  	, "quantity": 1
 	  	, "amount": 100

@@ -93,4 +93,8 @@
 		select * from order_events where txId = #{txId} and eventType = #{eventType}
 	</select>
 	
+	<select id="getOrderEvent" resultMap="OrderEvent">
+		select * from order_events;
+	</select>
+	
 </mapper>

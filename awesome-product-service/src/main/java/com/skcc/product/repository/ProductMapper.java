@@ -40,4 +40,8 @@ public interface ProductMapper {
 	
 //	@select("select * from products where txId = #{txId} and eventType = #{eventType}")
 	public ProductEvent findProductEvent(@Param("productId") long productId, @Param("txId") String txId,@Param("eventType") String eventType);
+	
+//	@select("select * from product_events")
+	public List<ProductEvent> getProductEvent();
+	
 }

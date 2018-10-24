@@ -1,5 +1,7 @@
 package com.skcc.account.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.skcc.account.domain.Account;
@@ -25,5 +27,8 @@ public interface AccountMapper {
 	
 //	@Insert("insert into account_events(id, accountId, type, payload, txId, createdAt) values(#{id}, #{accountId}, #{type}, #{payload}, #{txId}, #{createdAt})")
 	public boolean createAccountEvent(AccountEvent accountEvent);
+	
+//	@Select("select * from account_events")
+	public List<AccountEvent> getAccountEvent();
 	
 }

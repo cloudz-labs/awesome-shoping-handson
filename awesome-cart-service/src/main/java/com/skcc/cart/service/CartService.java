@@ -45,6 +45,10 @@ public class CartService {
 		return this.cartMapper.findCartByAccountId(accountId);
 	}
 	
+	public List<CartEvent> getCartEvent() {
+		return this.cartMapper.getCartEvent();
+	}
+	
 	public boolean addCartAndCreatePublishEvent(Cart cart) {
 		boolean result = false;
 		
@@ -277,7 +281,7 @@ public class CartService {
 		CartProduct cartProduct = new CartProduct();
 		cartProduct.setId(productEvent.getPayload().getId());
 		cartProduct.setName(productEvent.getPayload().getName());
-		cartProduct.setCategoryId(productEvent.getPayload().getCategoryId());
+		cartProduct.setCategoryName(productEvent.getPayload().getCategoryName());
 		cartProduct.setOriginalPrice(productEvent.getPayload().getOriginalPrice());
 		cartProduct.setSalePercentage(productEvent.getPayload().getSalePercentage());
 		cartProduct.setSalePrice(productEvent.getPayload().getSalePrice());

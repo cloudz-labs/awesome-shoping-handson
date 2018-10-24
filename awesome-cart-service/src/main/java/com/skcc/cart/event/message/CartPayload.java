@@ -7,22 +7,23 @@ import com.skcc.cart.domain.CartProduct;
 //@AllArgsConstructor
 //@ToString
 public class CartPayload {
+	
 	private long id;
 	private long accountId;
 	private long productId;
 	private String productActive;
 	private long productQuantity; 
-	private CartProduct cartProduct;
+	private CartProduct productInfo;
 	
 	public CartPayload(long id, long accountId, long productId, String productActive, long productQuantity,
-			CartProduct cartProduct) {
+			CartProduct productInfo) {
 		super();
 		this.id = id;
 		this.accountId = accountId;
 		this.productId = productId;
 		this.productActive = productActive;
 		this.productQuantity = productQuantity;
-		this.cartProduct = cartProduct;
+		this.productInfo = productInfo;
 	}
 	
 	public CartPayload() {}
@@ -67,19 +68,18 @@ public class CartPayload {
 		this.productQuantity = productQuantity;
 	}
 
-	public CartProduct getCartProduct() {
-		return cartProduct;
+	public CartProduct getProductInfo() {
+		return productInfo;
 	}
 
-	public void setCartProduct(CartProduct cartProduct) {
-		this.cartProduct = cartProduct;
+	public void setProductInfo(CartProduct productInfo) {
+		this.productInfo = productInfo;
 	}
 
 	@Override
 	public String toString() {
 		return "CartPayload [id=" + id + ", accountId=" + accountId + ", productId=" + productId + ", productActive="
-				+ productActive + ", productQuantity=" + productQuantity + ", cartProduct=" + cartProduct + "]";
+				+ productActive + ", productQuantity=" + productQuantity + ", productInfo=" + productInfo + "]";
 	}
-	
 	
 }

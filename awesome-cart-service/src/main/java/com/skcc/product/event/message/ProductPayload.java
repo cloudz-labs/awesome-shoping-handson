@@ -8,7 +8,7 @@ public class ProductPayload {
 	
 	private long id;
 	private String name;
-	private long categoryId;
+	private String CategoryName;
 	private String active;
 	private long originalPrice;
 	private long salePercentage;
@@ -17,12 +17,12 @@ public class ProductPayload {
 	private long amount;
 	private String img;
 	
-	public ProductPayload(long id, String name, long categoryId, String active, long originalPrice, long salePercentage,
-			long salePrice, long resultPrice, long amount, String img) {
+	public ProductPayload(long id, String name, String categoryName, String active, long originalPrice,
+			long salePercentage, long salePrice, long resultPrice, long amount, String img) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.categoryId = categoryId;
+		CategoryName = categoryName;
 		this.active = active;
 		this.originalPrice = originalPrice;
 		this.salePercentage = salePercentage;
@@ -50,12 +50,12 @@ public class ProductPayload {
 		this.name = name;
 	}
 
-	public long getCategoryId() {
-		return categoryId;
+	public String getCategoryName() {
+		return CategoryName;
 	}
 
-	public void setCategoryId(long categoryId) {
-		this.categoryId = categoryId;
+	public void setCategoryName(String categoryName) {
+		CategoryName = categoryName;
 	}
 
 	public String getActive() {
@@ -116,11 +116,9 @@ public class ProductPayload {
 
 	@Override
 	public String toString() {
-		return "ProductPayload [id=" + id + ", name=" + name + ", categoryId=" + categoryId + ", active=" + active
+		return "ProductPayload [id=" + id + ", name=" + name + ", CategoryName=" + CategoryName + ", active=" + active
 				+ ", originalPrice=" + originalPrice + ", salePercentage=" + salePercentage + ", salePrice=" + salePrice
 				+ ", resultPrice=" + resultPrice + ", amount=" + amount + ", img=" + img + "]";
 	}
-	
-	
 	
 }

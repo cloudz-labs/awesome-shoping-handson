@@ -66,5 +66,9 @@
 	<update id="undoPayPayment">
 		update payments set accountId = #{accountId}, orderId = #{orderId}, paymentMethod = #{paymentMethod}, paymentDetail1 = #{paymentDetail1}, paymentDetail2 = #{paymentDetail2}, paymentDetail3 = #{paymentDetail3}, price = #{price}, paid = #{paid}, active = #{active} where id = #{id}
 	</update>
-		
+	
+	<select id="getPaymentEvent" resultMap="PaymentEvent">
+		select * from payment_events;
+	</select>
+	
 </mapper>

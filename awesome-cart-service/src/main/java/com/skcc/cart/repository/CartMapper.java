@@ -47,4 +47,6 @@ public interface CartMapper {
 //	update("update carts set productQuantity = #{quantity} where id = #{id}")
 	public void setCartQuantity(@Param("id") long id, @Param("quantity") long quantity);
 	
+//	@select("select * from cart_events")
+	public List<CartEvent> getCartEvent();
 }

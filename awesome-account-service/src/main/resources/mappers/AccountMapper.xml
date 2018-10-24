@@ -50,4 +50,8 @@
 			, #{txId}, #{createdAt})
 	</insert>
 	
+	<select id="getAccountEvent" resultMap="AccountEvent">
+		select * from account_events;
+	</select>
+	
 </mapper>

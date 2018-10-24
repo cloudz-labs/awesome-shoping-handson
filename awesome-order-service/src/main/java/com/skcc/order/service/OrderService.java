@@ -42,14 +42,15 @@ public class OrderService {
 		return this.orderMapper.findOrderByAccountId(accountId);
 	}
 	
-	public Order createOrderAndCreatePublishOrderEvent(Order order) {
-		Order resultOrder = null;
+	public boolean createOrderAndCreatePublishOrderEvent(Order order) {
+		boolean result = false;
 		
 		try {
-			resultOrder = this.orderService.createOrderAndCreatePublishOrderCreatedEvent(order);
+			this.orderService.createOrderAndCreatePublishOrderCreatedEvent(order);
+			result = true;
 		} catch(Exception e) {
 			try {
-				resultOrder = null;
+				result = false;
 				e.printStackTrace();
 				this.orderService.createPublishOrderCreateFailedEvent(order);
 			} catch(Exception e1) {
@@ -57,7 +58,7 @@ public class OrderService {
 			}
 		}
 		
-		return resultOrder;
+		return result;
 	}
 	
 	public boolean cancelOrderAndCreatePublishOrderEvent(long id) {
@@ -303,6 +304,10 @@ public class OrderService {
 			throw new Exception();
 	}
 	
+	public List<OrderEvent> getOrderEvent(){
+		return this.orderMapper.getOrderEvent();
+	}
+	
 	public void CreatePublishOrderEvent(String txId, Order order, OrderEventType orderEventType) {
 		OrderEvent orderEvent = this.orderService.convertOrderToOrderEvent(txId, order.getId(), orderEventType);
 		this.createOrderEvent(orderEvent);
@@ -341,10 +346,10 @@ public class OrderService {
 		
 		order.setId(orderEvent.getOrderId());
 		order.setAccountId(orderEvent.getPayload().getAccountId());
-		order.setAccountInfo(orderEvent.getPayload().getOrderAccount());
+		order.setAccountInfo(orderEvent.getPayload().getAccountInfo());
 		order.setPaymentId(orderEvent.getPayload().getPaymentId());
-		order.setPaymentInfo(orderEvent.getPayload().getOrderPayment());
-		order.setProductsInfo(orderEvent.getPayload().getOrderProducts());
+		order.setPaymentInfo(orderEvent.getPayload().getPaymentInfo());
+		order.setProductsInfo(orderEvent.getPayload().getProductsInfo());
 		order.setPaid(orderEvent.getPayload().getPaid());
 		order.setStatus(orderEvent.getPayload().getStatus());
 		

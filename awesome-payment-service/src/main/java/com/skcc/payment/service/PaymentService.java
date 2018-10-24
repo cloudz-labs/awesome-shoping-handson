@@ -40,10 +40,6 @@ public class PaymentService {
 		this.paymentPublish = paymentPublish;
 	}
 	
-	public List<Payment> findPaymentByAccountId(long accountId) {
-		return this.paymentMapper.findPaymentByAccountId(accountId); 
-	}
-	
 	public boolean payPaymentAndCreatePublishEvent(long id) {
 		boolean result = false;
 		Payment resultPayment = this.findUnpaidPaymentById(id);
@@ -107,23 +103,6 @@ public class PaymentService {
 		this.createPublishPaymentEvent(txId, payment, PaymentEventType.PaymentPayUndoFailed);
 	}
 	
-	public Payment convertOrderEventToPayment(OrderEvent orderEvent) {
-		Payment payment = new Payment();
-		
-		payment.setId(orderEvent.getPayload().getPaymentId());
-		payment.setAccountId(orderEvent.getPayload().getOrderPayment().getAccountId());
-		payment.setOrderId(orderEvent.getPayload().getOrderPayment().getOrderId());
-		payment.setPaymentMethod(orderEvent.getPayload().getOrderPayment().getPaymentMethod());
-		payment.setPaymentDetail1(orderEvent.getPayload().getOrderPayment().getPaymentDetail1());
-		payment.setPaymentDetail2(orderEvent.getPayload().getOrderPayment().getPaymentDetail2());
-		payment.setPaymentDetail3(orderEvent.getPayload().getOrderPayment().getPaymentDetail3());
-		payment.setPrice(orderEvent.getPayload().getOrderPayment().getPrice());
-		payment.setPaid(orderEvent.getPayload().getOrderPayment().getPaid());
-		payment.setActive(orderEvent.getPayload().getOrderPayment().getActive());
-		
-		return payment;
-	}
-	
 	public void cancelPayment(Payment payment) {
 		this.paymentMapper.cancelPayment(payment);
 	}
@@ -166,6 +145,32 @@ public class PaymentService {
 		this.paymentMapper.undoPayPayment(payment);
 	}
 	
+	public long getPaymentEventId() {
+		this.paymentMapper.getPaymentEventId();
+	}
+	
+
+	public List<Payment> findPaymentByAccountId(long accountId) {
+		return this.paymentMapper.findPaymentByAccountId(accountId); 
+	}
+	
+	public Payment convertOrderEventToPayment(OrderEvent orderEvent) {
+		Payment payment = new Payment();
+		
+		payment.setId(orderEvent.getPayload().getPaymentId());
+		payment.setAccountId(orderEvent.getPayload().getPaymentInfo().getAccountId());
+		payment.setOrderId(orderEvent.getPayload().getPaymentInfo().getOrderId());
+		payment.setPaymentMethod(orderEvent.getPayload().getPaymentInfo().getPaymentMethod());
+		payment.setPaymentDetail1(orderEvent.getPayload().getPaymentInfo().getPaymentDetail1());
+		payment.setPaymentDetail2(orderEvent.getPayload().getPaymentInfo().getPaymentDetail2());
+		payment.setPaymentDetail3(orderEvent.getPayload().getPaymentInfo().getPaymentDetail3());
+		payment.setPrice(orderEvent.getPayload().getPaymentInfo().getPrice());
+		payment.setPaid(orderEvent.getPayload().getPaymentInfo().getPaid());
+		payment.setActive(orderEvent.getPayload().getPaymentInfo().getActive());
+		
+		return payment;
+	}
+	
 	public Payment convertPaymentEventToPayment(PaymentEvent paymentEvent) {
 		Payment payment = new Payment();
 		
@@ -192,7 +197,7 @@ public class PaymentService {
 			payment = this.findById(id);
 		
 		PaymentEvent paymentEvent = new PaymentEvent();
-		paymentEvent.setId(this.paymentMapper.getPaymentEventId());
+		paymentEvent.setId(this.getPaymentEventId());
 		paymentEvent.setPaymentId(id);
 		paymentEvent.setDomain(domain);
 		paymentEvent.setEventType(paymentEventType);
@@ -234,6 +239,10 @@ public class PaymentService {
 	
 	public PaymentEvent findPreviousPaymentEvent(String txId, long paymentId) {
 		return this.paymentMapper.findPreviousPaymentEvent(txId, paymentId);
+	}
+	
+	public List<PaymentEvent> getPaymentEvent() {
+		return this.paymentMapper.getPaymentEvent();
 	}
 	
 }

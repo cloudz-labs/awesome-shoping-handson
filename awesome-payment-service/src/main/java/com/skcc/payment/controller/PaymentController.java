@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skcc.payment.domain.Payment;
+import com.skcc.payment.event.message.PaymentEvent;
 import com.skcc.payment.service.PaymentService;
 
 @RestController
@@ -35,4 +36,8 @@ public class PaymentController {
 		return this.paymentService.payPaymentAndCreatePublishEvent(id);
 	}
 	
+	@GetMapping(value="/payments/events")
+	public List<PaymentEvent> getPaymentEvent(){
+		return this.paymentService.getPaymentEvent();
+	}
 }
