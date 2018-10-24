@@ -146,7 +146,7 @@ public class PaymentService {
 	}
 	
 	public long getPaymentEventId() {
-		this.paymentMapper.getPaymentEventId();
+		return this.paymentMapper.getPaymentEventId();
 	}
 	
 
