@@ -26,7 +26,7 @@ public class AccountService {
 	@Autowired
 	private AccountService accountService;
 	
-	@Value("${domain.name}")
+	@Value("${domain.account.name}")
 	private String domainName;
 	
 	@Autowired

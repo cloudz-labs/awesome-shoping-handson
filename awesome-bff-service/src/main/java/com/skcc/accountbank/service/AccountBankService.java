@@ -10,7 +10,7 @@ import com.skcc.accountbank.domain.AccountBank;
 @Service
 public class AccountBankService {
 	
-	@Value("${api.payment.url}")
+	@Value("${api.account.url}")
 	private String apiGatewayUrl;
 	
 	private RestTemplate restTemplate;

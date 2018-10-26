@@ -17,7 +17,7 @@ public class AccountPublish {
 	
 	private AccountOutputChannel accountOutputChannel;
 	
-	@Value("${domain.name}")
+	@Value("${domain.account.name}")
 	private String domain;
 	
 	private static final Logger log = LoggerFactory.getLogger(AccountPublish.class);

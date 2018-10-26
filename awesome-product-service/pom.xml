@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>js-product-service</name>
+	<name>awesome-product-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

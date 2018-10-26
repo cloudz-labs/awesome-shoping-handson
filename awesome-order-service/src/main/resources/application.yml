@@ -14,13 +14,18 @@ spring:
     platform: mysql
     initialization-mode: always
 #    driver-class-name: com.mysql.jdbc.Driver
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: labs
-    password: awesome-rabbitmq
   cloud:
     stream:
+      binders:
+        rabbitmq:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: labs
+                password: awesome-rabbitmq
       bindings:
         productAmountSubtractFailed:
           destination: productExchange

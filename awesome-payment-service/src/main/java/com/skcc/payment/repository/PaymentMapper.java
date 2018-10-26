@@ -32,13 +32,12 @@ public interface PaymentMapper {
 //	@update("update payments set active = #{active} where orderId = #{orderId}")
 	public void cancelPayment(Payment payment);
 	
-//	@update("update payments set accountId = #{accountId}, orderId = #{orderId}, paymentMethod = #{paymentMethod}, paymentDetail1 = #{paymentDetail1}, paymentDetail2 = #{paymentDetail2}, paymentDetail3 = #{paymentDetail3}, price = #{price}, paid = #{paid}, active = #{active} where id = #{id}")
-	public void undoPayPayment(Payment payment);
-	
 //	@select("select * from payment_events where paymentId = #{paymentId} and id = (select max(id) from payment_events where paymentId = #{paymentId} and id < (select min(id) from payment_events where paymentId = #{paymentId} and txId = #{txId}))")
 	public PaymentEvent findPreviousPaymentEvent(@Param("txId") String txId, @Param("paymentId") long paymentId);
 	
 //	@select("select * from payment_events")
 	public List<PaymentEvent> getPaymentEvent();
+	
+	public long getPaymentEventId();
 	
 }
