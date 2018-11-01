@@ -1,10 +1,23 @@
-//account event 조회
-GET localhost:8090/account/v1/accounts/events
-//cart event 조회
-GET localhost:8090/cart/v1/carts/events
-//order event 조회
-GET localhost:8090/order/v1/orders/events
-//payment event 조회
-GET localhost:8090/payment/v1/payments/events
-//product event 조회
-GET localhost:8090/product/v1/products/events
+-- awesome-account-service
+select * from accounts;
+select * from account_events;
+select * from account_banks;
+select * from account_bank_events;
+
+-- awesome-cart-service
+select * from carts;
+select * from cart_events;
+
+-- awesome-order-service
+select * from orders;
+select * from order_events;
+
+-- awesome-payment-service
+select * from payments;
+select * from payment_events;
+
+-- awesome-product-service
+select * from categories;
+select * from category_events;
+select * from products;
+select * from product_events;
