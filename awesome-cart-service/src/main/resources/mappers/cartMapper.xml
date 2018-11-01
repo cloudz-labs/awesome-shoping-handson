@@ -62,7 +62,7 @@
 	</select>
 	
 	<select id="getCartEventId" resultType="long">
-		select get_sequence('eventId')
+		select event_seq.nextval;
 	</select>
 	
 	<insert id="createCartEvent" parameterMap="CartEvent">

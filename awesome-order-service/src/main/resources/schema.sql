@@ -1,12 +1,16 @@
+--sequence
+create sequence event_seq;
+create sequence order_seq;
+
 -- orders
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   id bigint NOT NULL
   ,accountId bigint  NOT NULL
   ,paymentId bigint  NOT NULL
-  ,accountInfo json  NOT NULL
-  ,productsInfo json  NOT NULL
-  ,paymentInfo json  NOT NULL
+  ,accountInfo text  NOT NULL
+  ,productsInfo text  NOT NULL
+  ,paymentInfo text  NOT NULL
   ,paid varchar(255) NOT NULL
   ,status varchar(255) NOT NULL 
   ,createdAt datetime NOT NULL
@@ -20,7 +24,7 @@ CREATE TABLE order_events (
   ,domain varchar(255) NOT NULL
   ,orderId bigint  NOT NULL
   ,eventType varchar(255)  NOT NULL
-  ,payload json NOT NULL
+  ,payload text NOT NULL
   ,txId varchar(255)  NOT NULL
   ,createdAt datetime NOT NULL
   ,PRIMARY KEY (`id`)

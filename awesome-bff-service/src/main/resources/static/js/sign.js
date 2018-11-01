@@ -75,7 +75,7 @@ $('#signupBtn').click(function(self){
 	accountTemp.name = $('#name').val();
 	accountTemp.mobile = $('#mobile').val();
 	accountTemp.address = $('#address').val();
-	accountTemp.scope = 'scope';
+	accountTemp.scope = 'customer';
 	
 	var account = JSON.stringify(accountTemp);
 	

@@ -1,3 +1,12 @@
+--sequence
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select order_seq.nextval;
+
 INSERT INTO orders 
 (id, accountId, paymentId, accountInfo, productsInfo, paymentInfo, paid, status, createdAt)
 VALUES
@@ -24,8 +33,8 @@ VALUES
   	, "img": "images/product-01.jpg"
    }]'
 , '{"id": 1, "accountId": 1, "paymentMethod": "bank", "paymentDetail1": "kb", "paymentDetail2": "123123123123", "paymentDetail3": "","price": 90000, "paid": "paid"}'
-, "paid"
-, "completed"
+, 'paid'
+, 'completed'
 , NOW());
   
 INSERT INTO order_events 

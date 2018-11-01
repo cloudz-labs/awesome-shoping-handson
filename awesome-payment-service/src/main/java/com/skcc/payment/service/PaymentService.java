@@ -39,7 +39,6 @@ public class PaymentService {
 		this.paymentPublish = paymentPublish;
 	}
 	
-	
 	public void cancelPayment(Payment payment) {
 		this.paymentMapper.cancelPayment(payment);
 	}

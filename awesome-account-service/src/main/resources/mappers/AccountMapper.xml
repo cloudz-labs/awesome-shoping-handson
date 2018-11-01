@@ -40,14 +40,14 @@
 	</update>
 	
 	<select id="getAccountEventId" resultType="long">
-		select get_sequence('eventId');
+		select event_seq.nextval;
 	</select>
 	
 	<insert id="createAccountEvent" parameterMap="AccountEvent">
 		insert into account_events(id, domain, accountId, eventType, payload, txId, createdAt) 
 		values(#{id}, #{domain}, #{accountId}, #{eventType}
 			, #{payload, typeHandler=com.skcc.account.config.AccountPayloadJsonTypeHandler}
-			, #{txId}, #{createdAt})
+			, #{txId}, NOW())
 	</insert>
 	
 	<select id="getAccountEvent" resultMap="AccountEvent">

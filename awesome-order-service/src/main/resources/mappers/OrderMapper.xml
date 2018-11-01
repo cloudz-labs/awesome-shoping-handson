@@ -61,11 +61,11 @@
 	</update>
 	
 	<select id="getOrderEventId" resultType="long">
-		select get_sequence('eventId')
+		select event_seq.nextval;
 	</select>
 	
 	<select id="getOrderId" resultType="long">
-		select get_sequence('orderId')
+		select order_seq.nextval;
 	</select>
 	
 	<insert id="createOrderEvent" parameterMap="OrderEvent" >

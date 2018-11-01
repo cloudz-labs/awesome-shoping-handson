@@ -1,3 +1,6 @@
+--sequence
+create sequence event_seq;
+
 -- accounts
 DROP TABLE IF EXISTS accounts;
 CREATE TABLE accounts (
@@ -19,9 +22,9 @@ CREATE TABLE account_events (
   ,domain varchar(255) NOT NULL
   ,accountId bigint  NOT NULL
   ,eventType varchar(255)  NOT NULL
-  ,payload json NOT NULL
+  ,payload text NOT NULL
   ,txId varchar(255)  NOT NULL
-  ,createdAt varchar(255) NOT NULL
+  ,createdAt datetime NOT NULL
   ,PRIMARY KEY (id)
 );
 
@@ -44,7 +47,7 @@ CREATE TABLE account_bank_events (
   ,domain varchar(255) NOT NULL
   ,accountBankId bigint  NOT NULL
   ,eventType varchar(255)  NOT NULL
-  ,payload json NOT NULL
+  ,payload text NOT NULL
   ,txId varchar(255)  NOT NULL
   ,createdAt datetime NOT NULL
   ,PRIMARY KEY (`id`)

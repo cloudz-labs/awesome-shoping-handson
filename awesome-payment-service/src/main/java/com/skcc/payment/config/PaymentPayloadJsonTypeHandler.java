@@ -2,6 +2,7 @@ package com.skcc.payment.config;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
+import java.sql.Clob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,13 +36,13 @@ public class PaymentPayloadJsonTypeHandler extends BaseTypeHandler<Object>{
 	@Override
 	public PaymentPayload getNullableResult(ResultSet rs, String columnName) throws SQLException {
 		
-		Object d = rs.getObject(columnName);
+		Clob d = (Clob) rs.getObject(columnName);
 		if(d == null) return null;
 
 		PaymentPayload cp = null;
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			cp = objectMapper.readValue(d.toString(), PaymentPayload.class);
+			cp = objectMapper.readValue(d.getSubString(1, (int) d.length()), PaymentPayload.class);
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {

@@ -1,3 +1,6 @@
+--sequence
+create sequence event_seq;
+
 -- carts
 DROP TABLE IF EXISTS carts;
 CREATE TABLE carts (
@@ -6,7 +9,7 @@ CREATE TABLE carts (
   ,productId bigint  NOT NULL
   ,productActive varchar(255) NOT NULL
   ,productQuantity bigint NOT NULL
-  ,productInfo json NOT NULL
+  ,productInfo text NOT NULL
   ,createdAt datetime NOT NULL
   ,PRIMARY KEY (`id`)
 );
@@ -18,7 +21,7 @@ CREATE TABLE cart_events (
   ,domain varchar(255) NOT NULL
   ,cartId bigint  NOT NULL
   ,eventType varchar(255)  NOT NULL
-  ,payload json NOT NULL
+  ,payload text NOT NULL
   ,txId varchar(255)  NOT NULL
   ,createdAt datetime NOT NULL
   ,PRIMARY KEY (`id`)

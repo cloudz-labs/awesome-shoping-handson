@@ -2,6 +2,7 @@ package com.skcc.order.config;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
+import java.sql.Clob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -54,13 +55,13 @@ public class OrderProductTypeHandler extends BaseTypeHandler<Object>{
 //		
 //		return cp;
 		
-		Object d = rs.getObject(columnName);
+		Clob d = (Clob) rs.getObject(columnName);
 		if(d == null) return null;
 		
 		List<OrderProduct> cps = null;
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			cps = objectMapper.readValue(d.toString(), new TypeReference<List<OrderProduct>>() {});
+			cps = objectMapper.readValue(d.getSubString(1, (int) d.length()), new TypeReference<List<OrderProduct>>() {});
 		} catch (JsonParseException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {

@@ -1,3 +1,6 @@
+--sequence
+create sequence event_seq;
+
 -- products
 DROP TABLE IF EXISTS payments;
 CREATE TABLE payments (
@@ -22,7 +25,7 @@ CREATE TABLE payment_events (
   ,domain varchar(255) NOT NULL
   ,paymentId bigint  NOT NULL
   ,eventType varchar(255)  NOT NULL
-  ,payload json NOT NULL
+  ,payload text NOT NULL
   ,txId varchar(255)  NOT NULL
   ,createdAt datetime NOT NULL
   ,PRIMARY KEY (`id`)

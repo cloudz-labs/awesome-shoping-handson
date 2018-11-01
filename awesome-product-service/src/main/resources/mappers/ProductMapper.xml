@@ -54,7 +54,7 @@
 	</insert>
 	
 	<select id="getProductEventId" resultType="long">
-		select get_sequence('eventId')
+		select event_seq.nextval;
 	</select>
 	
 	<select id="findProductEvent" resultMap="ProductEvent">

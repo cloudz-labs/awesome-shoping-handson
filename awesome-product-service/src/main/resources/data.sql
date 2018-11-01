@@ -1,3 +1,11 @@
+--sequence
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
 ('Esprit Ruffle Shirt', 1, 'active', 100000, 80000, 5, 4000, 76000, 'images/product-01.jpg', NOW());
 INSERT INTO products (name, categoryId, active, amount, originalPrice, salePercentage, salePrice, resultPrice, img, createdAt) VALUES
@@ -51,11 +59,11 @@ VALUES
 , 'tx123123125'
 , NOW());
 
-INSERT INTO categories (name, priority, active, createdAt) VALUES ('women', 1, "active", NOW());
-INSERT INTO categories (name, priority, active, createdAt) VALUES ('men', 2, "active", NOW());
-INSERT INTO categories (name, priority, active, createdAt) VALUES ('bag', 3, "active", NOW());
-INSERT INTO categories (name, priority, active, createdAt) VALUES ('shoes', 4, "active", NOW());
-INSERT INTO categories (name, priority, active, createdAt) VALUES ('watches', 5, "active", NOW());
+INSERT INTO categories (name, priority, active, createdAt) VALUES ('women', 1, 'active', NOW());
+INSERT INTO categories (name, priority, active, createdAt) VALUES ('men', 2, 'active', NOW());
+INSERT INTO categories (name, priority, active, createdAt) VALUES ('bag', 3, 'active', NOW());
+INSERT INTO categories (name, priority, active, createdAt) VALUES ('shoes', 4, 'active', NOW());
+INSERT INTO categories (name, priority, active, createdAt) VALUES ('watches', 5, 'active', NOW());
   
 INSERT INTO category_events (id,categoryId, domain, eventType, payload, txId, createdAt)
 VALUES

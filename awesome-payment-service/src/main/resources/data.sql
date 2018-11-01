@@ -1,3 +1,11 @@
+--sequence
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+select event_seq.nextval;
+
 INSERT INTO payments
 (accountId,orderId,paymentMethod,paymentDetail1,paymentDetail2,paymentDetail3,price,paid,active,createdAt)
 VALUES
