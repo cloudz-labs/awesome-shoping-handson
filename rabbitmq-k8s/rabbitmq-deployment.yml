@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: awesome-shopping-mq
+  labels:
+    app: awesome-shopping-mq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awesome-shopping-mq
+  template:
+    metadata:
+      labels:
+        app: awesome-shopping-mq
+    spec:
+      containers:
+      - name: awesome-shopping-mq
+        image: rabbitmq:3-management
+        imagePullPolicy: Always
+        ports:
+          - name: http
+            protocol: TCP
+            containerPort: 15672
+          - name: amqp
+            protocol: TCP
+            containerPort: 5672
+        env:
+        - name: RABBITMQ_DEFAULT_USER
+          value: labs
+        - name: RABBITMQ_DEFAULT_PASS
+          value: awesome-rabbitmq  
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "0.25"
+          limits:
+            memory: "1Gi"
+            cpu: "1"

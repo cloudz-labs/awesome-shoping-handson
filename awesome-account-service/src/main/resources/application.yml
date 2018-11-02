@@ -28,8 +28,8 @@ spring:
           environment:
             spring:
               rabbitmq:
-                host: localhost
-                port: 5672
+                host: 169.56.106.154
+                port: 32598
                 username: labs
                 password: awesome-rabbitmq
       bindings:
