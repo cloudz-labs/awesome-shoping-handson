@@ -1,21 +1,21 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: awesome-shopping-mq
+  name: awesome-rabbitmq
   labels:
-    app: awesome-shopping-mq
+    app: awesome-rabbitmq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: awesome-shopping-mq
+      app: awesome-rabbitmq
   template:
     metadata:
       labels:
-        app: awesome-shopping-mq
+        app: awesome-rabbitmq
     spec:
       containers:
-      - name: awesome-shopping-mq
+      - name: awesome-rabbitmq
         image: rabbitmq:3-management
         imagePullPolicy: Always
         ports:
